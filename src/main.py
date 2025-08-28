@@ -76,7 +76,7 @@ try:
             response = f'{response}\n\r'
             data = list(response.encode())
             payload = [(0x10+last_tx_seq), len(data)] + data + [0x01, 0x01]
-            last_tx_seq = last_tx_seq + 1 if last_tx_seq < 16 else 0
+            last_tx_seq = 1 if last_tx_seq == 0 else 0
             ser.write(payload)
             time_send = time.perf_counter()
 
