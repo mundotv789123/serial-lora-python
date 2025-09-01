@@ -4,7 +4,6 @@ import time
 
 # CONFIG
 TIME_OUT_SECS=5
-SERIAL_PORT='/dev/ttyAMA0'
 RETRY_COUNT=3
 
 # PROPs
@@ -42,14 +41,14 @@ def listening(timer):
 
 
 tim = Timer()
-tim.init(freq=10, mode=Timer.PERIODIC, callback=listening)
+tim.init(freq=20, mode=Timer.PERIODIC, callback=listening)
 
 ledPin = Pin('LED', Pin.OUT)
 def led_blink(timer):
     ledPin.value((not ledPin.value()) if time_send is not None else 0)
 
 ledtim = Timer()
-ledtim.init(freq=4, mode=Timer.PERIODIC, callback=led_blink)
+ledtim.init(freq=5, mode=Timer.PERIODIC, callback=led_blink)
 
 count=0
 
